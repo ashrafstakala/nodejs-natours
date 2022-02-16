@@ -49,3 +49,7 @@ if (process.argv[2] === '--import') {
 }
 
 console.log(process.argv);
+
+// RUN SCRIPT //
+// DELETE DATA ==> node dev-data/data/import-dev-data.js --delete
+// DELETE DATA ==> node dev-data/data/import-dev-data.js --import
