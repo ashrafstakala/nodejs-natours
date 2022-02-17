@@ -9,9 +9,9 @@ const tourSchema = new mongoose.Schema(
       required: [true, 'A tour must have a name'],
       unique: true,
       trim: true,
-      maxlength: [40, 'A tour name must have less than or equal 40 characters'],
-      minlength: [10, 'A tour name must have more or equal than 10 characters'],
-      // validate: [validator.isAlpha, 'A tour name must only contain characters'],
+      maxlength: [40, 'A tour name must have less or equal then 40 characters'],
+      minlength: [10, 'A tour name must have more or equal then 10 characters'],
+      // validate: [validator.isAlpha, 'Tour name must only contain characters']
     },
     slug: String,
     duration: {
@@ -27,7 +27,7 @@ const tourSchema = new mongoose.Schema(
       required: [true, 'A tour must have a difficulty'],
       enum: {
         values: ['easy', 'medium', 'difficult'],
-        message: 'Diffulty is either: easy, medium or difficult',
+        message: 'Difficulty is either: easy, medium, difficult',
       },
     },
     ratingsAverage: {
@@ -48,7 +48,7 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       validate: {
         validator: function (val) {
-          // this validator points to current doc on NEW document creation only
+          // this only points to current doc on NEW document creation
           return val < this.price;
         },
         message: 'Discount price ({VALUE}) should be below regular price',
@@ -57,7 +57,7 @@ const tourSchema = new mongoose.Schema(
     summary: {
       type: String,
       trim: true,
-      required: [true, 'A tour must have a summary'],
+      required: [true, 'A tour must have a description'],
     },
     description: {
       type: String,
@@ -95,18 +95,18 @@ tourSchema.pre('save', function (next) {
   next();
 });
 
-// tourSchema.pre('save', function (next) {
+// tourSchema.pre('save', function(next) {
 //   console.log('Will save document...');
 //   next();
 // });
 
-// tourSchema.post('save', function (doc, next) {
+// tourSchema.post('save', function(doc, next) {
 //   console.log(doc);
 //   next();
 // });
 
 // QUERY MIDDLEWARE
-// tourSchema.pre('find', function (next) {
+// tourSchema.pre('find', function(next) {
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
 
@@ -122,6 +122,7 @@ tourSchema.post(/^find/, function (docs, next) {
 // AGGREGATION MIDDLEWARE
 tourSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+
   console.log(this.pipeline());
   next();
 });
