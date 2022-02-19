@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 
+const hpp = require('hpp');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
@@ -38,10 +39,24 @@ app.use(mongoSanitize());
 // M6: Data sanitization against XSS attacks
 app.use(xss());
 
-// M6: Serving static files
+// M7: Prevent parameter polution
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'maxGroupSize',
+      'difficulty',
+      'price',
+    ],
+  })
+);
+
+// M8: Serving static files
 app.use(express.static(`${__dirname}/public`));
 
-// M7: Test middleware
+// M9: Test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
