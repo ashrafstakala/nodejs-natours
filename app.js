@@ -14,8 +14,7 @@ const reviewRouter = require('./routes/reviewRoutes');
 
 const app = express();
 
-// 1) GLOBAL MIDDLEWARE
-// M1: Set security HTTP headers
+// GLOBAL MIDDLEWARE
 app.use(helmet());
 
 // M2: Development logging
@@ -63,7 +62,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// 2) ROUTES
+// ROUTES
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
