@@ -24,8 +24,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // M1: HTTP security headers
-app.use(helmet());
-
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
