@@ -37,7 +37,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 });
 
 exports.createBookingCheckout = catchAsync(async (req, res, next) => {
-  // This is only temporary, because it's unsecure. Users could make booking without paying
+  // This is only temporary, because it's unsecure. Users could make booking without paying. Will be replaced with Stripe webhook.
   const { tour, user, price } = req.query;
 
   if (!tour && !user && !price) return next();
