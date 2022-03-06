@@ -38,6 +38,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     status: 'success',
     session,
   });
+  console.log('STRIPE SESSION CREATED SUCCESFULLY ✅');
 });
 
 // exports.createBookingCheckout = catchAsync(async (req, res, next) => {
@@ -53,12 +54,17 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createBookingCheckout = async (session) => {
   const tour = session.client_reference_id;
   const user = (await User.findOne({ email: session.customer_email })).id;
-  const { price } = await Tour.findOne({ _id: session.client_reference_id });
+  const price = session.amount_total / 100;
+
+  console.log('Tour:', tour);
+  console.log('User:', user);
+  console.log('Price:', price);
 
   await Booking.create({ tour, user, price });
 };
 
 exports.webhookCheckout = (req, res, next) => {
+  console.log('CALL STRIPE WEBHOOK ⚡️');
   const signature = req.headers['stripe-signature'];
 
   let event;
