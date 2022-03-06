@@ -17,9 +17,12 @@ export const signup = async (name, email, password, passwordConfirm) => {
     });
 
     if (res.data.status === 'success') {
-      showAlert('success', 'Acount created');
+      showAlert(
+        'success',
+        'Acount created successfully. You can now book tours 🙌 '
+      );
       window.setTimeout(() => {
-        location.assign('/login');
+        location.assign('/');
       }, 1500);
     }
   } catch (err) {
