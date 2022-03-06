@@ -15,9 +15,9 @@ https://natours-co.herokuapp.com/
 
 - TODO:
 
-  - Signup (currently can only signup via Postman)
   - Cleanup tours locations
   - Complete rest of the account setting views
   - Manage bookings API enhancements (allow Tour leads to manage tours)
   - Build frontend in React
   - Implement 2-factor auth on signup
+  - Mobile responsive layout
