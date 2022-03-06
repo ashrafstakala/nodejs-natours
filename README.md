@@ -1,6 +1,11 @@
-# Natours API & Website
+# Natours App 🐼
 
-Backend: API for Natours Web App, built with Node, Express, Mongooose, MongoDB.
-Frontent: Booking overview, login, account and tour detail pages built with pug and the backend API. Stripe used for booking checkout payments.
+https://natours-co.herokuapp.com/
 
-TBD: Signup, cleanup tours detail locations, complete account setting views, manage bookings API enhancements
+- Backend: Natours API built with Node, Express, Mongooose and friends 🐣
+
+- Frontend: Natours website, login, account and tour detail pages built with Pug, Javascript
+
+- Services: Stripe -> Payments, Sendgrid -> Emails, MongoDB -> Database, Heroku -> Cloud app hosting, Git + Github -> Version control / repo
+
+- TODO: Signup (currently can only signup via Postman), cleanup tours locations, complete rest of the account setting views, manage bookings API enhancements, build frontend in React, implement 2-factor auth on signup, build like/favourite functionality, review posting ui on front-end
