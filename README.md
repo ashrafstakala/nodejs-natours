@@ -7,15 +7,17 @@ https://natours-co.herokuapp.com/
 - Frontend: Natours website, login, account and tour detail pages built with Pug, Javascript 🐶
 
 - Services:
-  -- Stripe -> Payments
-  -- Sendgrid -> Emails
-  -- MongoDB -> Database
-  -- Heroku -> Cloud app hosting
+
+  - Stripe -> Payments
+  - Sendgrid -> Emails
+  - MongoDB -> Database
+  - Heroku -> Cloud app hosting
 
 - TODO:
-  -- Signup (currently can only signup via Postman)
-  -- Cleanup tours locations
-  -- Complete rest of the account setting views
-  -- Manage bookings API enhancements (allow Tour leads to manage tours)
-  -- Build frontend in React
-  -- Implement 2-factor auth on signup
+
+  - Signup (currently can only signup via Postman)
+  - Cleanup tours locations
+  - Complete rest of the account setting views
+  - Manage bookings API enhancements (allow Tour leads to manage tours)
+  - Build frontend in React
+  - Implement 2-factor auth on signup
